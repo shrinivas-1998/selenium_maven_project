@@ -1,0 +1,52 @@
+package checkboxes_Handling;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Handling_And_Selecting_And_deselecting_Selected_Checkboxes 
+{
+	public static void main(String[] args) throws InterruptedException 
+	{
+		// TODO Auto-generated method stub
+		 WebDriver driver = new ChromeDriver();
+			
+			driver.manage().window().maximize();
+			
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			
+			driver.get("https://testautomationpractice.blogspot.com/");
+			
+			Thread.sleep(5000);
+			
+			List<WebElement> Check_Boxes = driver.findElements(By.xpath("//input[@class ='form-check-input' and (@type = 'checkbox')]"));
+			
+			
+			// select First 3 chexboxes 
+	         for (int i=0; i<3; i++)
+	         {
+	        	 Check_Boxes.get(i).click();
+	        	 Thread.sleep(3000);
+	         }
+	         
+				Thread.sleep(5000);
+				
+				for (int i=0; i<3; i++)
+		         {
+					if(Check_Boxes.get(i).isSelected())
+					{
+					    Check_Boxes.get(i).click();
+			        	Thread.sleep(3000);
+					}
+		        	 
+		         }
+				
+	 		Thread.sleep(5000);
+	 		
+	 		driver.quit();
+	}
+}

@@ -1,0 +1,34 @@
+package keyboard_Actions;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Switching_To_New_Window_By_Using_newWindow_Method 
+{
+	public static void main(String[] args) throws InterruptedException 
+	{
+		// TODO Auto-generated method stub
+        WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		driver.get("https://www.opencart.com/");
+		
+		Thread.sleep(5000);
+		
+		// this command is upadted from selenium4.x
+		//driver.switchTo().newWindow(WindowType.TAB);  // open new tab
+		driver.switchTo().newWindow(WindowType.WINDOW); // open new window
+		
+		driver.get("https://www.cricbuzz.com/");
+		
+		Thread.sleep(5000);
+
+        driver.quit();
+	}
+}
