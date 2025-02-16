@@ -32,8 +32,5 @@ public class Xpath_By_Using_Unique_Attribute
 	   
 		Thread.sleep(5000);
 		driver.quit();
-
-
 	}
-
 }

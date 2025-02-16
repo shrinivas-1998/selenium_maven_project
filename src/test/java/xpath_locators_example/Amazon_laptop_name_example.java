@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Amazon_laptop_name_example 
 {
-
 	public static void main(String[] args) throws InterruptedException 
 	{
 		// TODO Auto-generated method stub
@@ -40,8 +39,5 @@ public class Amazon_laptop_name_example
 	    System.out.println(name_of_laptopn.getText());
 	   
 	    driver.quit();
-
-
 	}
-
 }
