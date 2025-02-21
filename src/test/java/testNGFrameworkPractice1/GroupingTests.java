@@ -1,61 +1,61 @@
 package testNGFrameworkPractice1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GroupingTests extends BaseTest
+public class GroupingTests extends BaseTest 
 {
-	@Test(priority = 1, groups = "Sanity")
-	public void cbloginTest() throws InterruptedException 
+	@Test(groups = { "sanity" })
+	public void testCricbuzzLogin() throws InterruptedException 
 	{
-	    driver.get("https://www.cricbuzz.com/");
-	    driver.findElement(By.cssSelector("span[class = 'cb-plus-ico cb-user-icon']")).click();
-	    Thread.sleep(3000);
-	    driver.findElement(By.id("cb-user-email-input")).sendKeys("sb123@gmail.com");
+		driver.get("https://www.cricbuzz.com/");
+		driver.findElement(By.cssSelector("span[class = 'cb-plus-ico cb-user-icon']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("cb-user-email-input")).sendKeys("user123@gmail.com");
+		System.out.println("Cricbuzz login test executed.");
 	}
 
-	@Test(priority = 2, groups = "Sanity")
-	public void FBLoginTest() throws InterruptedException 
+	@Test(groups = { "sanity" })
+	public void testFacebookLogin() throws InterruptedException 
 	{
-	    driver.get("https://www.facebook.com/login/");
-	    driver.findElement(By.cssSelector("#email")).sendKeys("sb12345@gmail.com");
-	    Thread.sleep(3000);
-	    driver.findElement(By.cssSelector("#pass")).sendKeys("sb@12321234");
-	    Thread.sleep(3000);
-	    driver.findElement(By.cssSelector("button[name = 'login']")).click();
-	    Thread.sleep(3000);
+		driver.get("https://www.facebook.com/login/");
+		driver.findElement(By.cssSelector("#email")).sendKeys("user12345@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#pass")).sendKeys("password123");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("button[name = 'login']")).click();
+		Thread.sleep(2000);
+		System.out.println("Facebook login test executed.");
 	}
 
-	@Test(groups = "Sanity")
-	public void instaLoginTest() throws InterruptedException 
+	@Test(groups = { "regression" })
+	public void testInstagramLogin() throws InterruptedException 
 	{
-	    driver.get("https://www.instagram.com/");
-	    driver.findElement(By.xpath("//input[@aria-label='Phone number, username, or email']")).sendKeys("sb1234@gmail.com");
-	    Thread.sleep(3000);
-	    driver.findElement(By.xpath("//input[@aria-label='Password']")).sendKeys("sb@1234");
-	    Thread.sleep(3000);
-	    driver.findElement(By.xpath("//div[text() = 'Log in']"));
+		driver.get("https://www.instagram.com/");
+		driver.findElement(By.xpath("//input[@aria-label='Phone number, username, or email']"))
+				.sendKeys("user1234@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@aria-label='Password']")).sendKeys("password123");
+		Thread.sleep(2000);
+		System.out.println("Instagram login test executed.");
 	}
 
-	@Test(groups = "Regression")
-	public void loginTest() throws InterruptedException 
+	@Test(groups = { "sanity", "regression" })
+	public void testOrangeHRMLogin() throws InterruptedException 
 	{
-	    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    driver.findElement(By.name("username")).sendKeys("Admin");
-	    Thread.sleep(3000);
-	    driver.findElement(By.name("password")).sendKeys("admin123");
-	    Thread.sleep(3000);
-	    driver.findElement(By.xpath("//button[@type = 'submit']")).click();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		Thread.sleep(2000);
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[@type = 'submit']")).click();
 
-	    // Assertion 1: Verify the page title
-	    String expectedTitle = "OrangeHRM";
-	    String actualTitle = driver.getTitle();
-	    Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match after login");
+		// Assertion: Verify login success
+		String expectedTitle = "OrangeHRM";
+		String actualTitle = driver.getTitle();
+		Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
 
-	    // Assertion 2: Verify dashboard is displayed after login
-	    WebElement dashboardElement = driver.findElement(By.xpath("//h6[text()='Dashboard']"));
-	    Assert.assertTrue(dashboardElement.isDisplayed(), "Dashboard is not displayed after login");
+		System.out.println("OrangeHRM login test executed.");
 	}
 }

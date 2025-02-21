@@ -40,7 +40,7 @@ public class AllLoginTest extends BaseTest
 		driver.findElement(By.xpath("//div[text() = 'Log in']"));
 	}
 
-	@Test(dependsOnMethods = { "instaLoginTest" })
+	@Test(dependsOnMethods = {"instaLoginTest"})
 	public void loginTest() throws InterruptedException 
 	{
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -51,7 +51,7 @@ public class AllLoginTest extends BaseTest
 		driver.findElement(By.xpath("//button[@type = 'submit']")).click();
 
 		// Assertion 1: Verify the page title
-		String expectedTitle = "OrangeHRM";
+		String expectedTitle = "OrangeHRM123";
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match after login");
 

@@ -3,16 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testNGFrameworkPractice1.GroupingTests">
+      <class name="parameterisationInTestNGPractice1.ByUsingDataProvider">
         <methods>
-          <include name="testOrangeHRMLogin"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="deleteCookies"/>
-          <include name="testInstagramLogin"/>
-          <include name="setupWait"/>
+          <include name="TearDown"/>
+          <include name="TestLogin" invocation-numbers="1 2 3 4 5 6"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- testNGFrameworkPractice1.GroupingTests -->
+      </class> <!-- parameterisationInTestNGPractice1.ByUsingDataProvider -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
